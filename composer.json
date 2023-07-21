@@ -1,0 +1,25 @@
+{
+    "name": "visanduma/omnipay-payhere",
+    "description": "PayHere driver for the Omnipay payment processing library",
+    "type": "library",
+    "require": {
+        "omnipay/common": "^3",
+        "symfony/http-client": "^6.3"
+    },
+    "require-dev": {
+        "omnipay/tests": "^4",
+        "http-interop/http-factory-guzzle": "^1.2"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Visanduma\\OmnipayPayhere\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "dhanuSama",
+            "email": "dhanusha@visanduma.com"
+        }
+    ]
+}
