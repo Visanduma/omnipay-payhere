@@ -4,7 +4,7 @@ namespace Visanduma\OmnipayPayhere;
 
 use Omnipay\Common\AbstractGateway;
 
-abstract class PayHereGateway extends AbstractGateway
+class PayHereGateway extends AbstractGateway
 {
     public function getName()
     {
@@ -52,55 +52,55 @@ abstract class PayHereGateway extends AbstractGateway
 
     public function acceptNotification(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\PayHere\Message\PayHereNotificationRequest', $parameters);
+        return $this->createRequest('\Visanduma\OmnipayPayhere\Message\PayHereNotificationRequest', $parameters);
     }
 
     public function getAccessToken(array $parameters = array()) 
     {
-        return $this->createRequest('\Omnipay\PayHere\Message\PayHereAccessTokenRequest', $parameters);
+        return $this->createRequest('\Visanduma\OmnipayPayhere\Message\PayHereAccessTokenRequest', $parameters);
     }
 
     public function purchase(array $parameters = array())
     {
-        return $this->createRequest('\Omnipay\PayHere\Message\PayHerePurchaseRequest', $parameters);
+        return $this->createRequest('\Visanduma\OmnipayPayhere\Message\PayHerePurchaseRequest', $parameters);
     }
 
     public function authorize(array $parameters = array()) 
     {
-        return $this->createRequest('\Omnipay\PayHere\Message\PayHereAuthorizeRequest', $parameters);
+        return $this->createRequest('\Visanduma\OmnipayPayhere\Message\PayHereAuthorizeRequest', $parameters);
     }
 
     public function recurrence(array $parameters = array()) 
     {
-        return $this->createRequest('\Omnipay\PayHere\Message\PayHereRecurrenceRequest', $parameters);
+        return $this->createRequest('\Visanduma\OmnipayPayhere\Message\PayHereRecurrenceRequest', $parameters);
     }
 
     public function refund(array $parameters = array())
     {
         $this->setAccessToken($this->getAccessToken()->getToken());
-        return $this->createRequest('\Omnipay\PayHere\Message\PayHereRecurrenceRequest', $parameters);
+        return $this->createRequest('\Visanduma\OmnipayPayhere\Message\PayHereRecurrenceRequest', $parameters);
     }
 
     public function preApproval(array $parameters = array()) 
     {
-        return $this->createRequest('\Omnipay\PayHere\Message\PayHerePreapprovalRequest', $parameters);
+        return $this->createRequest('\Visanduma\OmnipayPayhere\Message\PayHerePreapprovalRequest', $parameters);
     }
 
     public function charging(array $parameters = array()) 
     {
         $this->setAccessToken($this->getAccessToken()->getToken());
-        return $this->createRequest('\Omnipay\PayHere\Message\PayHereRecurrenceRequest', $parameters);
+        return $this->createRequest('\Visanduma\OmnipayPayhere\Message\PayHereRecurrenceRequest', $parameters);
     }
 
     public function retrieval(array $parameters = array()) 
     {
         $this->setAccessToken($this->getAccessToken()->getToken());
-        return $this->createRequest('\Omnipay\PayHere\Message\PayHereRecurrenceRequest', $parameters);
+        return $this->createRequest('\Visanduma\OmnipayPayhere\Message\PayHereRecurrenceRequest', $parameters);
     }
 
     public function capture(array $parameters = array()) 
     {
         $this->setAccessToken($this->getAccessToken()->getToken());
-        return $this->createRequest('\Omnipay\PayHere\Message\PayHereRecurrenceRequest', $parameters);
+        return $this->createRequest('\Visanduma\OmnipayPayhere\Message\PayHereRecurrenceRequest', $parameters);
     }
 }
