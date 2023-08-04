@@ -3,7 +3,7 @@
     "description": "PayHere driver for the Omnipay payment processing library",
     "type": "library",
     "require": {
-        "omnipay/common": "^3",
+        "omnipay/common": "^3.0",
         "symfony/http-client": "^6.3"
     },
     "require-dev": {
