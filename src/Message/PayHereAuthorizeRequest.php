@@ -35,9 +35,6 @@ class PayHereAuthorizeRequest extends AbstractRequest
         return $this->response = new PayHereResponse($this, $data, $this->getApiFullUrl());
     }
 
-    /**
-     * @return string
-     */
     protected function getApiFullUrl()
     {
         return $this->getEndpoint().$this->apiEndpoint;

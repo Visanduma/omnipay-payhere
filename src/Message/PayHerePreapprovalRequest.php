@@ -31,6 +31,11 @@ class PayHerePreapprovalRequest extends AbstractRequest
 
     public function sendData($data) 
     {
-        return $this->response = new PayHereResponse($this, $data);
+        return $this->response = new PayHereResponse($this, $data, $this->getApiFullUrl());
+    }
+
+    protected function getApiFullUrl()
+    {
+        return $this->getEndpoint().$this->apiEndpoint;
     }
 }

@@ -3,6 +3,7 @@
 namespace Visanduma\OmnipayPayhere;
 
 use Omnipay\Common\AbstractGateway;
+use Visanduma\OmnipayPayhere\Message\PayHereNotification;
 
 class PayHereGateway extends AbstractGateway
 {
@@ -37,7 +38,7 @@ class PayHereGateway extends AbstractGateway
 
     public function setMerchantSecret($merchantSecret)
     {
-        $this->setParameter('merchantSecret', $merchantSecret);
+        return $this->setParameter('merchantSecret', $merchantSecret);
     }
 
     public function getMerchantSecret()
@@ -50,14 +51,14 @@ class PayHereGateway extends AbstractGateway
         $this->setParameter('accessToken', $accessToken);
     }
 
-    public function acceptNotification(array $parameters = array())
+    public function getAccessToken() 
     {
-        return $this->createRequest('\Visanduma\OmnipayPayhere\Message\PayHereNotificationRequest', $parameters);
+        return $this->createRequest('\Visanduma\OmnipayPayhere\Message\PayHereAccessTokenRequest', $this->getParameters());
     }
 
-    public function getAccessToken(array $parameters = array()) 
+    public function acceptNotification()
     {
-        return $this->createRequest('\Visanduma\OmnipayPayhere\Message\PayHereAccessTokenRequest', $parameters);
+        return new PayHereNotification($this->httpRequest, $this->httpClient, $this->getMerchantSecret());
     }
 
     public function purchase(array $parameters = array())

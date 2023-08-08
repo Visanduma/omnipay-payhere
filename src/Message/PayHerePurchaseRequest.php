@@ -32,7 +32,7 @@ class PayHerePurchaseRequest extends AbstractRequest
 
     public function sendData($data)
     {
-        return $this->response = new PayHerePurchaseResponse($this, $data, $this->getApiFullUrl());
+        return $this->response = new PayHereResponse($this, $data, $this->getApiFullUrl());
     }
 
     protected function getApiFullUrl()
