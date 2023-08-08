@@ -9,20 +9,20 @@ class PayHereAuthorizeRequest extends AbstractRequest
     public function getData()
     {
         $data = array(
-            'merchantId' => $this->getMerchantId(),
-            'returnUrl' => $this->getReturnUrl(),
-            'cancelUrl' => $this->getCancelUrl(),
-            'notifyUrl' => $this->getNotifyUrl(),
+            'merchant_id' => $this->getMerchantId(),
+            'return_url' => $this->getReturnUrl(),
+            'cancel_url' => $this->getCancelUrl(),
+            'notify_url' => $this->getNotifyUrl(),
             'amount' => $this->getAmount(),
             'currency' => $this->getCurrency(),
-            'firstName' => $this->getFirstName(), 
-            'lastName' => $this->getLastName(), 
+            'first_name' => $this->getFirstName(), 
+            'last_name' => $this->getLastName(), 
             'email' => $this->getEmail(), 
             'phone' => $this->getPhone(), 
             'address' => $this->getAddress(), 
             'city' => $this->getCity(), 
             'country' => $this->getCountry(), 
-            'orderId' => $this->getOrderId(), 
+            'order_id' => $this->getOrderId(), 
             'items' =>  $this->getItems(), 
             'hash' => $this->getHash()
         );
