@@ -15,10 +15,9 @@ class PayHereAccessTokenRequest extends AbstractRequest
 
     public function sendData($data) 
     {
-        $authorization_code = $this->getAuthorizationCode();
+        $authorization_code = $this->getParameter('appId') . ':' . $this->getParameter('appSecret');
         $headers = [
             'Accept' => 'application/json',
-            'Content-Type' => 'application/x-www-form-urlencoded',
             'Authorization' => 'Basic ' . base64_encode($authorization_code),
         ];
 
@@ -31,8 +30,7 @@ class PayHereAccessTokenRequest extends AbstractRequest
 
         $tokenData = json_decode($httpResponse->getBody()->getContents(), true);
 
-        $response = new PayHereAccessTokenResponse($this, $tokenData);
-        return $response;
+        return $this->response = new PayHereAccessTokenResponse($this, $tokenData);
     }
 
     protected function getApiFullUrl()

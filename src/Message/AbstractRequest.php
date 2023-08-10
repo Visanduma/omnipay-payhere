@@ -12,7 +12,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function setMerchantId($value)
     {
-        return $this->setParameter('merchantId', $value);
+        $this->setParameter('merchantId', $value);
     }
 
     public function getMerchantId()
@@ -30,6 +30,31 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->getParameter('merchantSecret');
     }
 
+    public function setAppId($app_id) 
+    {
+        $this->setParameter('appId', $app_id); 
+    }
+
+    public function getAppId()
+    {
+        return $this->getParameter('appId');
+    }
+
+    public function setAppSecret($app_secret) 
+    {
+        $this->setParameter('appSecret', $app_secret);
+    }
+
+    public function getAppSecret() 
+    {
+        return $this->getParameter('appSecret');
+    }
+
+    public function setAccessToken($accessToken)
+    {
+        $this->setParameter('accessToken', $accessToken);
+    }
+    
     public function setReturnUrl($returnUrl)
     {
         $this->setParameter('returnUrl', $returnUrl);
@@ -188,26 +213,6 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     public function getHash()
     {
         return $this->getParameter('hash');
-    }
-
-    public function setAppId($app_id) 
-    {
-        $this->setParameter('appId', $app_id); 
-    }
-
-    public function setAppSecret($app_secret) 
-    {
-        $this->setParameter('appSecret', $app_secret);
-    }
-
-    public function setAuthorizationCode($app_id, $app_secret)
-    {
-        $this->setParameter('authorizationCode', $app_id . ':' . $app_secret);
-    }
-
-    public function getAuthorizationCode() 
-    {
-        return $this->getParameter('authorizationCode');
     }
 
     public function setRefundDescription($value) 
