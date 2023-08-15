@@ -31,7 +31,7 @@ class PayHereCaptureRequest extends AbstractRequest
 
         $captureData = json_decode($httpResponse->getBody()->getContents(), true);
 
-        return $this->response =  new PayHereCaptureResponse($this, $captureData);
+        return $this->response =  new PayHereRestfulResponse($this, $captureData);
     }
 
     protected function getApiFullUrl()

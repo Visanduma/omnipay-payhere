@@ -27,7 +27,7 @@ class PayHereSubscriptionRequest extends AbstractRequest
 
         $allSubscriptions = json_decode($httpResponse->getBody()->getContents(), true);
 
-        return $this->response =  new PayHereSubscriptionResponse($this, $allSubscriptions);
+        return $this->response =  new PayHereRestfulResponse($this, $allSubscriptions);
     }
 
     public function getApiFullUrl() 

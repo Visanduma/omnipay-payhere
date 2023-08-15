@@ -9,7 +9,7 @@ class PayHereSubscriptionCancelRequest extends AbstractRequest
     public function getData()
     {
         return [
-            'subscription_id' =>  '420075032251'
+            'subscription_id' =>  $this->getSubscriptionId()
         ];
     }
 
@@ -27,9 +27,9 @@ class PayHereSubscriptionCancelRequest extends AbstractRequest
             http_build_query($data)
         );
 
-        $allSubscriptions = json_decode($httpResponse->getBody()->getContents(), true);
+        $cancel = json_decode($httpResponse->getBody()->getContents(), true);
 
-        return $this->response =  new PayHereSubscriptionResponse($this, $allSubscriptions);
+        return $this->response =  new PayHereRestfulResponse($this, $cancel);
     }
 
     public function getApiFullUrl() 

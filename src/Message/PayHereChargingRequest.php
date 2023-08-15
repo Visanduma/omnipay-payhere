@@ -37,7 +37,7 @@ class PayHereChargingRequest extends AbstractRequest
 
         $chargingData = json_decode($httpResponse->getBody()->getContents(), true);
 
-        return $this->response =  new PayHereChargingResponse($this, $chargingData);
+        return $this->response =  new PayHereRestfulResponse($this, $chargingData);
     }
 
     protected function getApiFullUrl()

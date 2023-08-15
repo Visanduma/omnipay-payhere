@@ -4,32 +4,34 @@ namespace Visanduma\OmnipayPayhere\Message;
 
 class PayHereSubscriptionPaymentRequest extends AbstractRequest 
 {
-    protected $apiEndpoint = '/merchant/v1/subscription/{subscription_id}/payments';
+    protected $apiEndpoint = '/merchant/v1/subscription/';
     
     public function getData()
     {
-        return [
-            'subscription_id' =>  '420075032251'
-        ];
+        return [];
     }
 
     public function sendData($data)
     {
-        
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Authorization' => 'Bearer' . $this->getParameter('accessToken')
+        ];
+
+        $httpResponse = $this->httpClient->request(
+            'GET',
+            $this->getApiFullUrl(),
+            $headers,
+            http_build_query($data)
+        );
+
+        $payments = json_decode($httpResponse->getBody()->getContents(), true);
+
+        return $this->response =  new PayHereRestfulResponse($this, $payments);
     }
 
     public function getApiFullUrl() 
     {
-        return $this->getEndpoint().$this->apiEndpoint;
+        return $this->getEndpoint().$this->apiEndpoint.$this->getSubscriptionId().'/payments';
     } 
-
-    // public function getRecurrence()
-    // {
-    //     return $this->getParameter('recurrence');
-    // }
-
-    // public function setDuration($duration) 
-    // {
-    //     $this->setParameter('duration', $duration);
-    // }
 }

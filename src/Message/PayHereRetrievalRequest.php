@@ -4,13 +4,11 @@ namespace Visanduma\OmnipayPayhere\Message;
 
 class PayHereRetrievalRequest extends AbstractRequest
 {
-    protected $apiEndpoint = '/merchant/v1/payment/search?order_id=LP8006126139';
+    protected $apiEndpoint = '/merchant/v1/payment/search?order_id=';
     
     public function getData()
     {
-        return [
-            'order_id' => $this->getOrderId()
-        ];
+        return [];
     }
 
     public function sendData($data) 
@@ -29,11 +27,11 @@ class PayHereRetrievalRequest extends AbstractRequest
 
         $retrievalData = json_decode($httpResponse->getBody()->getContents(), true);
 
-        return $this->response =  new PayHereRetrievalResponse($this, $retrievalData);
+        return $this->response =  new PayHereRestfulResponse($this, $retrievalData);
     }
 
     protected function getApiFullUrl()
     {
-        return $this->getEndpoint().$this->apiEndpoint;
+        return $this->getEndpoint().$this->apiEndpoint.$this->getOrderId();
     }
 }

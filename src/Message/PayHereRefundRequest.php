@@ -31,7 +31,7 @@ class PayHereRefundRequest extends AbstractRequest
 
         $refundData = json_decode($httpResponse->getBody()->getContents(), true);
 
-        return $this->response =  new PayHereRefundResponse($this, $refundData);
+        return $this->response =  new PayHereRestfulResponse($this, $refundData);
 
     }
 

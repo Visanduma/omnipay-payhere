@@ -2,9 +2,6 @@
 
 namespace Visanduma\OmnipayPayhere\Message;
 
-/**
- * SecurePay Direct Post Abstract Request.
- */
 abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
     protected $testEndpoint = 'https://sandbox.payhere.lk';
@@ -53,6 +50,16 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     public function setAccessToken($accessToken)
     {
         $this->setParameter('accessToken', $accessToken);
+    }
+
+    public function setSubscriptionId($subscription_id) 
+    {
+        $this->setParameter('subscriptionId', $subscription_id);
+    }
+
+    public function getSubscriptionId() 
+    {
+        return $this->getParameter('subscriptionId');
     }
     
     public function setReturnUrl($returnUrl)
