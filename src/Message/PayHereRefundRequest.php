@@ -9,9 +9,9 @@ class PayHereRefundRequest extends AbstractRequest
     public function getData() 
     {
         return  [
-            'payment_id' => $this->getTransactionReference(),
-            'description' => $this->getRefundDescription(),
-            //'authorization_token' => $this->getAuthorizationCode()
+            'payment_id' => $this->getPaymentId(),
+            'description' => $this->getDescription(),
+            //'authorization_token' => $this->getAuthorizationToken()
         ];
     }
 
@@ -26,7 +26,7 @@ class PayHereRefundRequest extends AbstractRequest
             'POST',
             $this->getApiFullUrl(),
             $headers,
-            http_build_query($data)
+            json_encode($data)
         );
 
         $refundData = json_decode($httpResponse->getBody()->getContents(), true);
@@ -38,5 +38,25 @@ class PayHereRefundRequest extends AbstractRequest
     protected function getApiFullUrl()
     {
         return $this->getEndpoint().$this->apiEndpoint;
+    }
+
+    public function setPaymentId($paymentId) 
+    {
+        $this->setParameter('paymentId', $paymentId);
+    }
+
+    public function getPaymentId() 
+    {
+        return $this->getParameter('paymentId');
+    }
+
+    public function setDescription($description) 
+    {
+        $this->setParameter('description', $description);
+    }
+
+    public function getDescription() 
+    {
+        return $this->getParameter('description');
     }
 }

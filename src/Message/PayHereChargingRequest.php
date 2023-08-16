@@ -14,7 +14,7 @@ class PayHereChargingRequest extends AbstractRequest
             'items' => $this->getItems(), 
             'currency' => $this->getCurrency(),
             'amount' => $this->getAmount(), 
-            'customer_token' => '59AFEE022CC69CA39D325E1B59130862' // from Preapproval API
+            'customer_token' => $this->getCustomerToken() // from Preapproval API
             //'custom_1' => , 
             //'custom_2' => , 
             //'notify_url' => $this->getNotifyUrl()
@@ -32,7 +32,7 @@ class PayHereChargingRequest extends AbstractRequest
             'POST',
             $this->getApiFullUrl(),
             $headers,
-            http_build_query($data)
+            json_encode($data)
         );
 
         $chargingData = json_decode($httpResponse->getBody()->getContents(), true);
@@ -43,5 +43,15 @@ class PayHereChargingRequest extends AbstractRequest
     protected function getApiFullUrl()
     {
         return $this->getEndpoint().$this->apiEndpoint;
+    }
+
+    public function setCustomerToken($customerToken) 
+    {
+         $this->setParameter('customerToken', $customerToken);
+    }
+
+    public function getCustomerToken() 
+    {
+        return $this->getParameter('customerToken');
     }
 }

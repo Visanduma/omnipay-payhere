@@ -21,8 +21,7 @@ class PayHereSubscriptionPaymentRequest extends AbstractRequest
         $httpResponse = $this->httpClient->request(
             'GET',
             $this->getApiFullUrl(),
-            $headers,
-            http_build_query($data)
+            $headers
         );
 
         $payments = json_decode($httpResponse->getBody()->getContents(), true);
