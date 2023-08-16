@@ -24,7 +24,7 @@ class PayHereSubscriptionCancelRequest extends AbstractRequest
             'POST',
             $this->getApiFullUrl(),
             $headers,
-            http_build_query($data)
+            json_encode($data)
         );
 
         $cancel = json_decode($httpResponse->getBody()->getContents(), true);

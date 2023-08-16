@@ -83,10 +83,7 @@ class PayHereGateway extends AbstractGateway
 
     public function getAccessToken() 
     {
-        //if(is_null($this->getParameter('accessToken')))
-            return $this->createRequest('\Visanduma\OmnipayPayhere\Message\PayHereAccessTokenRequest', $this->getParameters());
-        //else
-            //return 
+        return $this->createRequest('\Visanduma\OmnipayPayhere\Message\PayHereAccessTokenRequest', $this->getParameters());
     }
 
     public function acceptNotification()

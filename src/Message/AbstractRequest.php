@@ -222,24 +222,14 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->getParameter('hash');
     }
 
-    public function setRefundDescription($value) 
+    public function setAuthorizationToken($authorizationToken) 
     {
-        $this->setParameter('refund_description', $value);
+         $this->setParameter('authorizationToken', $authorizationToken);
     }
 
-    public function getRefundDescription() 
+    public function getAuthorizationToken() 
     {
-        return $this->getParameter('refund_description');
-    }
-
-    public function setCaptureDetails($value) 
-    {
-        $this->setParameter('deduction_details', $value);
-    }
-
-    public function getCaptureDetails() 
-    {
-        return $this->getParameter('deduction_details');
+        return $this->getParameter('authorizationToken');
     }
 
     public function getEndpoint()
